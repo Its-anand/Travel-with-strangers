@@ -1,0 +1,190 @@
+body{
+    margin: 0px;
+    padding: 0px;
+    background-image:  linear-gradient(to top, rgba(0, 0, 0, 0.292) , rgba(0, 0, 0, 0.986)), url('../image/home-background.jpg');
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+    font-family: sans-serif;
+    color:#fff;
+
+}
+a{
+    color:#000;
+    margin: 1rem 0;
+    text-decoration: none;
+}
+a:hover{
+    color: #00000098;
+}
+nav{
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    background-color: #fff;
+    color:#000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.1rem;
+    display: none;
+}
+#close{
+    position: absolute;
+    top:2rem;
+    right:3rem;
+    font-size: 1.3rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+header{
+    width: 100vw;
+    height: 4rem;
+    display: grid;
+    grid-template-columns: 20rem 1fr 7rem;
+    grid-template-rows: 1fr;
+    justify-items: center;
+    align-items: center;
+    background: #0000007a;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+}
+.pickupLine{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 6rem);
+    font-size: 1.5rem;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+#loginBtn{
+    font-size: 1rem;
+}
+/*-----------------------------------------Registration-----------------------------------------------*/
+.registration{
+    width: 9rem;
+    height: 3rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+.registration:hover{
+    color:green;
+}
+.menu{
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 4rem);
+}
+#user-registration{
+    display: flex;
+    flex-direction: column;
+    width: 22rem;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 15px;
+    color:#000;
+    padding: 0 2rem;
+}
+.input-registration{
+    border: 3px solid #fff;
+    color:#000;
+    border-radius: 10px;
+    border: 3px solid #0f2052;
+    height: 2.5rem;
+    margin-bottom: 1.5rem;
+    width: 100%;
+    font-size: 1.1rem;
+    cursor: pointer;
+    padding-left: 1rem;
+}
+#dateAndTime{
+    width: 100%;
+    height: 3rem;
+    border: 3px solid #0f2052;
+    padding: 1px 8px;
+    margin-bottom: 1.5rem;
+    border-radius: 10px;
+}
+.submit-registration{
+    border: 3px solid #0f2052;
+    border-radius: 10px;
+    height: 2.5rem;
+    width: 80%;
+    color:#000;
+    font-size: 1.1rem;
+    cursor: pointer;
+    margin-bottom: 1.5rem;
+}
+#upload{
+    border:3px solid #0f2052;
+    padding: 0.5rem 0.7rem;
+    border-radius: 10px;
+    width: 99%;
+    margin-bottom: 1.5rem;
+}
+#upload::file-selector-button {
+    color: #fff;
+    padding: 0.5em;
+    border: thin solid #0f2052;
+    background-color: #0f2052;
+    border-radius: 6px;
+  }
+  .labelHolder{
+    width: 105%;
+    font-weight: bold;
+
+  }
+  /**/
+.user{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: #fff;
+    width: 10rem;
+    height: 13rem;
+    border-radius: 10px;
+    color:#000;
+    margin: 0 2rem;
+}
+.profilePhoto{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+.findFriendPageMain {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: calc(100vh - 4rem);
+    flex-wrap: wrap;
+    box-sizing: border-box;
+    padding:0 10rem ;
+}
+/*menu*/
+.menuButton{
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    cursor: pointer;
+}
+.line{
+    width: 90%;
+    height: 0.2rem;
+    background-color: #fff;
+    border-radius: 3px;
+}
