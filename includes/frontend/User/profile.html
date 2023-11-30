@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel with stranger</title>
+    <link rel="stylesheet" href="../../../style/profile-style.css">
+</head>
+
+<body onload="loader()">
+    <!-- <?php
+    include('../../../components/preloader.php');
+    ?> -->
+    <header>
+        <span id="logo">Travel with stranger</span>
+        <a href="" title="Log out">
+            <img id="logoutBtn" src="../../../media/Logout.svg" alt="">
+        </a>
+        
+    </header>
+    <main>
+        <section id="profile">
+            <img id="profileImage" src="../../../media/profile.png"/>
+            <br><br>
+            <div class="options">
+                <button onclick="showPostOperation('postUpload')">Post Something</button>
+                <!-- <button onclick="showPostOperation('temp')">View Plains</button> -->
+                <select id="plains" onchange="location = this.value;">
+                    <option style="display: none;">View option</option>
+                    <option value="./create-group.html">Create new group</option>
+                    <option value="./join-group.html">Join other group</option>
+                    <option value="./view-group.html">View plains</option>
+                </select>
+            </div>
+        </section>
+        <section id="postsContainer">
+            <section id="posts">
+                <div class="post" onclick="showPostOperation('temp')">
+                    <img class="postImg" src="../../../media/profile.png" alt="">
+                </div>
+                <div class="post" onclick="showPostOperation('temp')">
+                    <img class="postImg" src="../../../media/profile.png" alt="">
+                </div>
+                <div class="post" onclick="showPostOperation('temp')">
+                    <img class="postImg" src="../../../media/profile.png" alt="">
+                </div>
+                <div class="post" onclick="showPostOperation('temp')">
+                    <img class="postImg" src="../../../media/profile.png" alt="">
+                </div>
+                <div class="post" onclick="showPostOperation('temp')">
+                    <img class="postImg" src="../../../media/profile.png" alt="">
+                </div>
+                <div class="post" onclick="showPostOperation('temp')">
+                    <img class="postImg" src="../../../media/profile.png" alt="">
+                </div>
+            </section>
+        </section>
+    </main>
+    <section id="Operations">
+        <div class="postOperationContainter" id="postEdit">
+            <form action="#" method="POST" class="postOperations">
+                <div class="closePost" onclick="hidePostOperation('postEdit')"><img src="../../../media/closeButton.svg" alt=""></div> <!--Close Button-->
+                <div class="postEditImgContainer"><!--Post Image-->
+                    <button type="button" class="chooseImgBtn">Choose Image</button>
+                    <img src="../../../media/profile.png" class="postEditImg" >
+                </div>
+
+                <div class="verticalLineContainer"><div class="verticalLine"></div></div> <!--Vertical Line-->
+                <div class="postDescriptionNbtn"><!--Post Description-->
+                    <textarea class="postDescription" placeholder="Type something.."></textarea>
+                    <div class="postBtn"><!--Post Operation Button-->
+                        <input type="submit" name="editBTN" value="Edit Post">
+                        <input type="submit" name="editBTN" value="Delete Post">
+                    </div>
+                </div>
+
+            </form>
+        </div>
+
+        <div class="postOperationContainter" id="postUpload">
+            <form action="#" method="POST" class="postOperations">
+                <div class="closePost" onclick="hidePostOperation('postUpload')"><img src="../../../media/closeButton.svg" alt=""></div> <!--Close Button-->
+                <div class="postEditImgContainer"><!--Post Image-->
+                    <button type="button" class="chooseImgBtn">Choose Image</button>
+                    <img src="../../../media/Upload-Image.png" class="postEditImg" >
+                </div>
+
+                <div class="verticalLineContainer"><div class="verticalLine"></div></div> <!--Vertical Line-->
+                <div class="postDescriptionNbtn"><!--Post Description-->
+                    <textarea class="postDescription" placeholder="Type something.."></textarea>
+                    <div class="postBtn"><!--Post Operation Button-->
+                        <input type="submit" name="editBTN" value="Post">
+                    </div>
+                </div>
+
+            </form>
+        </div>
+
+    </section>
+<script>
+    function hidePostOperation(postDiv){
+        document.getElementById(postDiv).style.display='none';
+    }
+    function showPostOperation(postDiv){
+        document.getElementById(postDiv).style.display='flex';
+    }
+</script>
+</body>

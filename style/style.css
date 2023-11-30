@@ -1,0 +1,274 @@
+:root{
+    --primaryColor: #FC0000;
+    --bgcolor: #fff;
+    --font: #fff;
+    --bgcolor2: #F0F8FF;
+}
+body{
+    margin: 0%;
+    padding: 0%;
+    color: var(--primaryColor);
+    background-color: var(--bgcolor);
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    box-sizing: border-box;
+}
+
+#loading
+{
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  background:#fff;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#loading-animation{
+    border: 3px solid #d20a0a;
+    border-radius: 48% 52% 57% 43% / 39% 47% 53% 61%;
+    position: absolute;
+    width: 29rem;
+    height: 29rem;
+    animation: temp 20s infinite;
+}
+#loading-text{
+    font-size: 2rem;
+}
+@keyframes temp{
+
+    0%{
+      transform: rotate(0deg);
+  
+      border-radius: 52% 48% 55% 45% / 41% 54% 46% 59%   ;
+    }
+    25%{
+      border-radius: 47% 53% 41% 59% / 47% 39% 61% 53%       ;
+  
+    }
+    50%{
+      transform: rotate(180deg);
+      border-radius: 47% 53% 38% 62% / 47% 65% 35% 53%     ;
+  
+    }
+  
+  
+    100%{
+      transform: rotate(365deg);
+  
+      border-radius: 52% 48% 55% 45% / 41% 54% 46% 59% ;
+  
+    }
+  }
+a{
+    color: var(--primaryColor);
+    font-weight: bold;
+    text-decoration: none;
+}
+/*--------------------------------------------------------------------header*/
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    padding:0 2rem;
+    height: 5rem;
+    width: 100%;
+}
+#logo{
+    font-size: 1.7rem;
+    font-weight: bold;
+}
+#menu{
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    cursor: pointer;
+    align-items: flex-end;
+    transition: 0.5s;
+}
+.line{
+    background-color: var(--primaryColor);
+    height: 0.3rem;
+    width: 100%;
+    border-radius: 5px;
+}
+.second-line{
+    width: 80%;
+}
+nav{
+    box-sizing: border-box;
+    position: absolute;
+    width: 100%;
+    background-color: var(--primaryColor);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 1.1rem;
+    height: calc(100vh - 5rem);
+    display: none;
+    padding: 3rem;
+    z-index: 9999999999;
+}
+nav a
+{
+    color: var(--font);
+    transition: 0.4s;
+}
+nav a:hover
+{
+    transform: scale(1.06);
+}
+/*--------------------------------------------------------------------main*/
+
+main{
+    width: 100%;
+    height: calc(100vh - 5rem);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    
+}
+.main--section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+}
+/*-------------------------------------------------------Registration*/
+
+.description{
+    font-size: 1.5rem;
+}
+.description button{
+    
+    background-color: var(--bgcolor);
+    color: var(--primaryColor);
+    width: 9rem;
+    height: 3rem;
+    border: 3px solid #FC0000;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+.description button:hover{
+    background-color: var(--primaryColor);
+    color: var(--font);
+
+}
+#loginBtn{
+    font-size: 1rem;
+    cursor: pointer;
+}
+#homepage-video{
+    width: 70%;
+}
+
+.swipe{
+    position: relative;
+    width: 100%;
+    height: calc(100vh - 5rem);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+#div1, #div2, #div3{
+    position: absolute;
+    width: 100%;
+    height: calc(100vh - 5rem);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+}
+
+#login, .homepage-form{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+}
+
+.homepage-form #h2{
+    width: 27rem;
+}
+.homepage-form #button{
+    width: 26.5rem;   
+}
+.homepage-form #button input{
+    margin-right: 1rem;
+}
+/*form style*/
+.input-registration{
+    color:#000;
+    border-radius: 10px;
+    border: 3px solid var(--primaryColor);
+    height: 2.5rem;
+    margin-bottom: 1.5rem;
+    width: 25rem;
+    font-size: 1.1rem;
+    cursor: pointer;
+    padding-left: 1rem;
+    outline: none;
+}
+#dateAndTime{
+    width: 100%;
+    height: 3rem;
+    border: 3px solid var(--primaryColor);
+    padding: 1px 8px;
+    margin-bottom: 1.5rem;
+    border-radius: 10px;
+}
+.submit-registration{
+    border: 3px solid var(--primaryColor);
+    border-radius: 10px;
+    height: 2.5rem;
+    width: 10rem;
+    color: #000;
+    background: #fff;
+    font-size: 1.1rem;
+    cursor: pointer;
+    margin-bottom: 1.5rem;
+}
+#upload{
+    border:3px solid var(--primaryColor);
+    padding: 0.5rem 0.7rem;
+    border-radius: 10px;
+    width: 24.7rem;
+    margin-bottom: 1.5rem;
+}
+#upload::file-selector-button {
+    color: #fff;
+    padding: 0.5em;
+    border: thin solid var(--primaryColor);
+    background-color: var(--primaryColor);
+    border-radius: 6px;
+  }
+  .labelHolder{
+    width: 26rem;
+    font-weight: bold;
+
+  }
+  #role{
+    border-radius: 10px;
+    border: 3px solid var(--primaryColor);
+    height: 3rem;
+    margin-bottom: 1.5rem;
+    width: 26.5rem;
+    outline: none;
+  }
+  #role::placeholder{
+    font-size: 1.1rem;
+    padding-left: 1rem;
+  }
+  #role option{
+    font-size: 1.1rem;
+  }
+  #role option:first-child{
+    display: none;
+}

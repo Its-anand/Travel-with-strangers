@@ -1,37 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Travel with strangers</title>
-    <link rel="stylesheet" href="./style_and_script/style.css">
+    <title>Travel with stranger</title>
+    <link rel="stylesheet" href="./style/style.css">
 </head>
-<body>
-<nav >
-    <div id="close" onclick="document.querySelector('nav').style.display='none'">X</div>
-    <a href="./includes/registration.php">User Registration</a>
-    <a href="./includes/login.php">User Login</a>
-    <a href="./includes/FindFriend.php">Find Friend</a>
-    <a href="#">Bus Service Registration</a>
-    <a href="#">Bus Service Login</a>
-    <a href="#">Hotel Service Registration</a>
-    <a href="#">Hotel Service Login</a>
-    <a href="./includes/contact.php">Contact Us</a>
-    <a href="./includes/about.php">About Us</a>
-</nav>
-<header>
-    <h2 id="logo">Travel With Stranger</h2>
-    <span></span>
-    <div class="menuButton" onclick="document.querySelector('nav').style.display='flex'">
-        <div class="up line"></div>
-        <div class="medial line"></div>
-        <div class="down line"></div>
-    </div>
-</header>
-    <section class="pickupLine">
-        <h1 >Ready to explore the world with someone new? <br> Join Travel with Stranger and <br> find your perfect travel buddy today!</h1>
-        <a href="./includes/frontend/registration.php"><button class="registration">Lets go!</button></a>
-        <p id="loginBtn">already have an account <a href="./includes/frontend/login.php">Sign in</a></p>
-    </section>
+
+<body onload="loader()">
+    <?php
+    include('./components/preloader.php');
+    ?>
+    <header>
+        <span id="logo">Travel with stranger</span>
+        <section id="menu" onclick="displayMenu()">
+            <div class="line first-line"></div>
+            <div class="line second-line"></div>
+            <div class="line third-line"></div>
+        </section>
+    </header>
+    <nav id="nav">
+
+        <a href="./includes/frontend/User/profile.html">User Profile</a>
+        <a href="./includes/frontend/Hotel/profile.html">Hotel Profile</a>
+        <a href="./includes/contact.php">Contact Us</a>
+        <a href="./includes/about.php">About Us</a>
+    </nav>
+    <main>
+        <section class="description-container main--section">
+            <div class="swipe">
+
+                <div id="div1">
+                    <form method="Post" id="signup" class="homepage-form">
+                        <div id="h2">
+                            <h2>Registration</h2>
+                        </div>
+                        <p class="labelHolder"><label for="imageUpload">Select Profile</label></p>
+                        <input type="file" id="upload" name="imageUpload">
+                        <select name="role" id="role">
+                            <option >--Select Your Role--</option>
+                            <option value="customer">Customer</option>
+                            <option value="hotel">Hotel</option>
+                        </select>
+                        <input type="text" class="input-registration" name="username" placeholder="Full Name *" required>
+                        <input type="email" class="input-registration" name="user_email" placeholder="Email *" required>
+                        <input type="password" class="input-registration" name="user_password" placeholder="Password *" required>
+                        <input type="text" class="input-registration" name="location" placeholder="Location *" required>
+                        <input type="hidden" value="" name="">
+                        <input type="hidden" value="" name="">
+                        <div id="button">
+                            <input type="submit" class="submit-registration" value="Submit" name="user-registration">
+                            <input onclick="showForm('div3')" type="button" value="Go Back" class="submit-registration">
+                        </div>
+                    </form>
+                </div>
+                <div id="div2">
+                    <form method="Post" id="login" class="homepage-form">
+                        <div id="h2">
+                            <h2>Login</h2>
+                        </div>
+                        <select name="role" id="role">
+                            <option >--Select Your Role--</option>
+                            <option value="customer">Customer</option>
+                            <option value="hotel">Hotel</option>
+                        </select>
+                        <input type="email" class="input-registration" name="user_email" placeholder="Email *" required>
+                        <input type="password" class="input-registration" name="user_password" placeholder="Password *" required>
+                        <div id="button">
+                            <input type="submit" class="submit-registration" value="Submit" name="user-registration">
+                            <input onclick="showForm('div3')" type="button" value="Go Back" class="submit-registration">
+                        </div>
+                    </form>
+                </div>
+                <div id="div3">
+                    <div class="description">
+                        <h1>Ready to explore the world<br> with someone new? <br> Join Travel with Stranger now</h1>
+                        <button onclick="showForm('div1')" class="registration">Lets go!</button>
+                        <p id="loginBtn">already have an account <b onclick="showForm('div2')">Sign in</b>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="video-container main--section">
+            <video autoplay muted loop id="homepage-video">
+                <source src="./media/homepage_video-with-white-bg.mp4" type="video/mp4">
+            </video>
+        </section>
+    </main>
+    <script>
+        function displayMenu() {
+            let nav = document.getElementById('nav');
+            if (nav.style.display == 'none' || nav.style.display == '') {
+                nav.style.display = 'flex';
+            } else {
+                nav.style.display = 'none';
+            }
+        }
+
+        function loader() {
+            var preloader = document.getElementById('loading');
+            preloader.style.display = "none";
+        }
+
+        function showForm(tag){
+            document.getElementById('div1').style.zIndex='';
+            document.getElementById('div2').style.zIndex='';
+            document.getElementById('div3').style.zIndex='';
+            let currentTag = document.getElementById(tag);
+            currentTag.style.zIndex='1';
+            console.log(currentTag);
+        }
+    </script>
 </body>
+
 </html>

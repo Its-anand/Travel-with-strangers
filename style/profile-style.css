@@ -1,0 +1,272 @@
+:root{
+  --primaryColor: #FC0000;
+  --bgcolor: #fff;
+  --font: #fff;
+  --bgcolor2: #F0F8FF;
+  --shadesblack: #8282822e;
+}
+body{
+  margin: 0px;
+  padding: 0px;
+  background-color: var(--bgcolor);
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  box-sizing: border-box;
+
+}
+/*--------------------------------------Header---------*/
+header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  padding:0 2rem;
+  height: 7rem;
+  width: 100%;
+  color: var(--primaryColor);
+
+}
+#logo{
+  font-size: 1.7rem;
+  font-weight: bold;
+}
+#logoutBtn{
+  width: 2rem;
+}
+
+/*------------------------PROFILE-----*/
+#profile{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#profileImage{
+  width: 10rem;
+  height: auto;
+  border-radius: 50%;
+  border: 3px solid var(--primaryColor);
+}
+#profile .options button{
+  background-color: var(--primaryColor);
+  border: 3px solid var(--primaryColor);
+  height: 3rem;
+  width: 10rem;
+  border: none;
+  border-radius: 15px;
+  color: var(--font);
+  font-size: 1.1rem;
+  margin: 0 1rem;
+  cursor: pointer;
+  transition: 0.2s;
+}
+#profile .options button:hover{
+  border: 3px solid var(--primaryColor);
+  background-color: var(--bgcolor);
+  color: var(--primaryColor);
+}
+/*--------------------------Post------------*/
+#postsContainer{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+#posts{
+  width: 46rem;
+  margin-top: 3rem;
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.post{
+  width: 14rem;
+  height: auto;
+  margin: 0.6rem;
+  position: relative;
+  
+}
+.postImg:hover{
+  opacity: 0.7;
+}
+
+.post .postImg{
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 15px;
+  cursor: pointer;
+
+}
+/**-----------------------------------Post Operations---**/
+
+.postOperationContainter{
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  top: 0px;
+  right: 0px;
+  background: rgba( 0, 0, 0, 0.25 );
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 4px );
+  -webkit-backdrop-filter: blur( 4px );
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: none;
+}
+.postOperations{
+  width: 50rem;
+  height: 30rem;
+  background-color: #fff;
+  border-radius: 10px;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+
+}
+.closePost{
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  cursor: pointer;
+}
+.postEditImgContainer{
+  width: 50%;
+  height: 100%;
+  display: flex;
+  align-items: center; 
+  justify-content: center;
+  overflow-y: auto; 
+  position: relative;
+}
+.postEditImg{
+  
+  width: 100%;
+}
+
+
+
+
+.postEditImgContainer:before {
+  /* empty pseudo */
+  content: '';
+  
+  /* start transparent, include a transition bcuz */
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  
+  /* covers the whole div */
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 2;
+
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+.postEditImgContainer:hover:before {
+  opacity: 1;
+}
+.postEditImgContainer img {
+  position: absolute;
+  display: block;
+  max-width: 100%;
+  height: auto;
+  z-index: 1;
+}
+
+.chooseImgBtn {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  position: relative;
+  padding: 0 30px;
+  height: 40px;
+  line-height: 40px;
+  max-width: 260px;
+  cursor: pointer;
+  z-index: 3;
+  border-radius: 10px;
+  border: none;
+  background: var(--primaryColor);
+  color: var(--font);
+  font-size: 0.9rem;
+}
+.chooseImgBtn:hover{
+  background-color: var(--bgcolor);
+  color: var(--primaryColor);
+
+}
+.postEditImgContainer:hover .chooseImgBtn {
+  opacity: 1;
+}
+
+
+
+
+
+.verticalLineContainer{
+  height: 100%;
+  width: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.verticalLine{
+  height: 75%;
+  width: 0.1rem;
+  background-color: #FC0000;
+
+}
+.postDescriptionNbtn{
+  width: 50%;
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+}
+.postDescription{
+  width: 24rem;
+  height: 16rem;
+  padding: 1rem;
+  box-sizing: border-box;
+  resize: none;
+  border: none;
+}
+.postBtn{
+  width: 100%;
+  height: 4rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.postBtn input{
+  width: 9rem;
+  height: 2.5rem;
+  border-radius: 10px;
+  color: var(--font);
+  font-size: 1rem;
+  background-color: var(--primaryColor);
+  border: 3px solid var(--primaryColor);
+  cursor: pointer;
+}
+#plains{
+  width: 10rem;
+  height: 3rem;
+  background: var(--primaryColor);
+  border: none;
+  border-radius: 1rem;
+  color: var(--font);
+  font-size: 1.1rem;
+  padding-left: 1rem;
+  outline: none;
+  cursor: pointer;
+}
+#plains:hover{
+  border: 3px solid var(--primaryColor);
+  background-color: var(--bgcolor);
+  color: var(--primaryColor);
+}
