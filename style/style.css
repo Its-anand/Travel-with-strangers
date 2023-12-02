@@ -241,6 +241,8 @@ main{
     border-radius: 10px;
     width: 24.7rem;
     margin-bottom: 1.5rem;
+    cursor: pointer;
+
 }
 #upload::file-selector-button {
     color: #fff;
@@ -248,6 +250,8 @@ main{
     border: thin solid var(--primaryColor);
     background-color: var(--primaryColor);
     border-radius: 6px;
+    cursor: pointer;
+
   }
   .labelHolder{
     width: 26rem;

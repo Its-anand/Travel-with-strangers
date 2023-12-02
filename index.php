@@ -10,7 +10,9 @@
 
 <body onload="loader()">
     <?php
-    include('./components/preloader.php');
+        include('./includes/backend/connection.php');
+        include('./components/preloader.php');
+        include('./components/alert.php');
     ?>
     <header>
         <span id="logo">Travel with stranger</span>
@@ -24,21 +26,21 @@
 
         <a href="./includes/frontend/User/profile.html">User Profile</a>
         <a href="./includes/frontend/Hotel/profile.html">Hotel Profile</a>
-        <a href="./includes/contact.php">Contact Us</a>
-        <a href="./includes/about.php">About Us</a>
+        <a href="./includes/contact.php">Contact Me</a>
+        <a href="./includes/about.php">About Me</a>
     </nav>
     <main>
         <section class="description-container main--section">
             <div class="swipe">
 
                 <div id="div1">
-                    <form method="Post" id="signup" class="homepage-form">
+                    <form method="Post" action="./includes/backend/register.php" enctype="multipart/form-data" id="signup" class="homepage-form">
                         <div id="h2">
                             <h2>Registration</h2>
                         </div>
-                        <p class="labelHolder"><label for="imageUpload">Select Profile</label></p>
-                        <input type="file" id="upload" name="imageUpload">
-                        <select name="role" id="role">
+                        <p class="labelHolder"><label for="user_profile_image">Select Profile</label></p>
+                        <input type="file" id="upload" name="user_profile_image">
+                        <select name="user_role" require id="role">
                             <option >--Select Your Role--</option>
                             <option value="customer">Customer</option>
                             <option value="hotel">Hotel</option>
@@ -46,9 +48,7 @@
                         <input type="text" class="input-registration" name="username" placeholder="Full Name *" required>
                         <input type="email" class="input-registration" name="user_email" placeholder="Email *" required>
                         <input type="password" class="input-registration" name="user_password" placeholder="Password *" required>
-                        <input type="text" class="input-registration" name="location" placeholder="Location *" required>
-                        <input type="hidden" value="" name="">
-                        <input type="hidden" value="" name="">
+                        <input type="text" class="input-registration" name="user_location" placeholder="Location *" required>
                         <div id="button">
                             <input type="submit" class="submit-registration" value="Submit" name="user-registration">
                             <input onclick="showForm('div3')" type="button" value="Go Back" class="submit-registration">
@@ -56,7 +56,7 @@
                     </form>
                 </div>
                 <div id="div2">
-                    <form method="Post" id="login" class="homepage-form">
+                    <form method="Post" action="./includes/backend/login.php" id="login" class="homepage-form">
                         <div id="h2">
                             <h2>Login</h2>
                         </div>
@@ -68,7 +68,7 @@
                         <input type="email" class="input-registration" name="user_email" placeholder="Email *" required>
                         <input type="password" class="input-registration" name="user_password" placeholder="Password *" required>
                         <div id="button">
-                            <input type="submit" class="submit-registration" value="Submit" name="user-registration">
+                            <input type="submit" class="submit-registration" value="Submit" name="user-login">
                             <input onclick="showForm('div3')" type="button" value="Go Back" class="submit-registration">
                         </div>
                     </form>

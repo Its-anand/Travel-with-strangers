@@ -23,11 +23,14 @@ header{
   height: 7rem;
   width: 100%;
   color: var(--primaryColor);
-
 }
 #logo{
   font-size: 1.7rem;
   font-weight: bold;
+  font-size: 1.7rem;
+  font-weight: bold;
+  color: red;
+  text-decoration: none;
 }
 #logoutBtn{
   width: 2rem;
@@ -40,11 +43,20 @@ header{
   justify-content: center;
   align-items: center;
 }
+.profileImageContainer{
+  width: 10rem;
+  height: 10rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  border: 3px solid var(--primaryColor);
+  overflow: hidden;
+}
 #profileImage{
   width: 10rem;
   height: auto;
   border-radius: 50%;
-  border: 3px solid var(--primaryColor);
 }
 #profile .options button{
   background-color: var(--primaryColor);
@@ -98,6 +110,13 @@ header{
   cursor: pointer;
 
 }
+.noPost{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: gray;
+}
 /**-----------------------------------Post Operations---**/
 
 .postOperationContainter{
@@ -144,8 +163,6 @@ header{
   
   width: 100%;
 }
-
-
 
 
 .postEditImgContainer:before {
