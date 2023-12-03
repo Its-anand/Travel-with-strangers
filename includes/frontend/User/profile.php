@@ -4,10 +4,7 @@
     include('../../backend/connection.php');
     include('../../../components/alert.php');
     session_start();
-    if(!isset($_SESSION['logged_in']))
-    {
-        header("location: ../../../Index.php");
-    }
+
 ?>
 <head>
     <meta charset="UTF-8">
@@ -57,7 +54,15 @@
         <section id="postsContainer">
             <section id="posts">
             <?php
-                $user_id = $_SESSION['UserLoginId'];
+                $user_exist_query="SELECT * FROM `travel_with_strangers_registration_user` where `user_email` ='$_SESSION[UserLoginId]'";
+                $result=mysqli_query($con,$user_exist_query);
+                if($result)
+                {
+                if(mysqli_num_rows($result)>0)
+                {
+                
+                $result_fetch=mysqli_fetch_assoc($result);
+                $user_id = $result_fetch['id'];
                 $selectquery = "SELECT * FROM travel_with_strangers_userposts where userid='$user_id'";
                 $result = mysqli_query($con,$selectquery);
                 if($result)
@@ -70,10 +75,12 @@
                     $postURL = $result_fetched['post_url'];
                     $postDescription = $result_fetched['post_description'];
                 ?>
-                    <div class="post" onclick="showPostOperation('temp')">
-                    <img class="postImg" src="../../../media/profile.png" >
+                    <div class="post" onclick="showPostOperation('postEdit<?php echo $id?>')">
+                    <img class="postImg" src="<?php echo "../".$postURL?>" >
                     </div>
                 <?php
+                }
+                }
                 }
                 }
                 else{
@@ -90,47 +97,63 @@
                 <!--Php end-->
 
 
-                <!-- <div class="post" onclick="showPostOperation('temp')">
-                    <img class="postImg" src="../../../media/profile.png" alt="">
-                </div>
-                <div class="post" onclick="showPostOperation('temp')">
-                    <img class="postImg" src="../../../media/profile.png" alt="">
-                </div>
-                <div class="post" onclick="showPostOperation('temp')">
-                    <img class="postImg" src="../../../media/profile.png" alt="">
-                </div>
-                <div class="post" onclick="showPostOperation('temp')">
-                    <img class="postImg" src="../../../media/profile.png" alt="">
-                </div>
-                <div class="post" onclick="showPostOperation('temp')">
-                    <img class="postImg" src="../../../media/profile.png" alt="">
-                </div> -->
+
             </section>
         </section>
     </main>
     <section id="Operations">
-        <div class="postOperationContainter" id="postEdit">
-            <form action="#" method="POST" class="postOperations">
-                <div class="closePost" onclick="hidePostOperation('postEdit')"><img src="../../../media/closeButton.svg" alt=""></div> <!--Close Button-->
-                <div class="postEditImgContainer"><!--Post Image-->
-                    <button type="button" class="chooseImgBtn">Choose Image</button>
-                    <img src="../../../media/profile.png" class="postEditImg" >
-                </div>
+    <?php
+                $user_exist_query="SELECT * FROM `travel_with_strangers_registration_user` where `user_email` ='$_SESSION[UserLoginId]'";
+                $result=mysqli_query($con,$user_exist_query);
+                if($result)
+                {
+                    if(mysqli_num_rows($result)>0)
+                    {
+                
+                        $result_fetch=mysqli_fetch_assoc($result);
+                        $user_id = $result_fetch['id'];
+                        $selectquery = "SELECT * FROM travel_with_strangers_userposts where userid='$user_id'";
+                        $result = mysqli_query($con,$selectquery);
+                            if($result)
+                            {
+                                if(mysqli_num_rows($result)>0)
+                                {
+                                while($result_fetched = mysqli_fetch_array($result))
+                                {
+                                    $id=$result_fetched['post_id'];
+                                    $postURL = $result_fetched['post_url'];
+                                    $postDescription = $result_fetched['post_description'];
+                                ?>
+                                    <div class="postOperationContainter" id="postEdit<?php echo $id;?>">
+                                        <form action="../../../includes/backend/postEditAndDelete.php" method="POST" class="postOperations" enctype="multipart/form-data">
+                                            <div class="closePost" onclick="hidePostOperation('postEdit<?php echo $id;?>')"><img src="../../../media/closeButton.svg" alt=""></div> <!--Close Button-->
+                                            <div class="postEditImgContainer"><!--Post Image-->
+                                                <img src="../<?php echo $postURL;?>" id="previewLoadedImage" class="postEditImg" >
+                                                <input type="hidden" name="postId" value="<?php echo $id;?>">
+                                            </div>
+                                                            
+                                            <div class="verticalLineContainer"><div class="verticalLine"></div></div> <!--Vertical Line-->
+                                            <div class="postDescriptionNbtn"><!--Post Description-->
+                                                <textarea class="postDescription" name="newPostDescription" placeholder="Type something.."><?php echo $postDescription;?></textarea>
+                                                <div class="postBtn"><!--Post Operation Button-->
+                                                    <input type="submit" name="editBTN" value="Edit Post">
+                                                    <input type="submit" name="deleteBTN" value="Delete Post">
+                                                </div>
+                                            </div>
+                                                            
+                                        </form>
+                                    </div>
+                                <?php
+                                }
+                                }
+                            }
+                    }
+                }
+                ?>
 
-                <div class="verticalLineContainer"><div class="verticalLine"></div></div> <!--Vertical Line-->
-                <div class="postDescriptionNbtn"><!--Post Description-->
-                    <textarea class="postDescription" placeholder="Type something.."></textarea>
-                    <div class="postBtn"><!--Post Operation Button-->
-                        <input type="submit" name="editBTN" value="Edit Post">
-                        <input type="submit" name="editBTN" value="Delete Post">
-                    </div>
-                </div>
-
-            </form>
-        </div>
 
         <div class="postOperationContainter" id="postUpload">
-            <form action="../../../includes/backend/post_upload.php" method="POST" class="postOperations">
+            <form action="../../../includes/backend/post_upload.php" enctype="multipart/form-data" method="POST" class="postOperations">
                 <div class="closePost" onclick="hidePostOperation('postUpload')"><img src="../../../media/closeButton.svg" alt=""></div> <!--Close Button-->
                 <div class="postEditImgContainer"><!--Post Image-->
                     <button type="button" onclick="document.getElementById('uploadFile').click()" class="chooseImgBtn">Choose Image</button>
@@ -157,13 +180,15 @@
     function showPostOperation(postDiv){
         document.getElementById(postDiv).style.display='flex';
     }
-
-    const fileInput = document.getElementById('uploadFile');
-    const preview = document.getElementById('preview');
+</script>
+<!--This code is to preview image in upload section-->
+<script>
+    let fileInput = document.getElementById('uploadFile');
+    let preview = document.getElementById('preview');
 
     fileInput.addEventListener('change', () => {
-    const file = fileInput.files[0];
-    const reader = new FileReader();
+    let file = fileInput.files[0];
+    let reader = new FileReader();
 
     reader.addEventListener('load', () => {
     preview.src = reader.result;
@@ -173,6 +198,6 @@
     reader.readAsDataURL(file);
     }
     });
-
 </script>
+
 </body>

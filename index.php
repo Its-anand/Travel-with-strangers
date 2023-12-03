@@ -56,7 +56,7 @@
                     </form>
                 </div>
                 <div id="div2">
-                    <form method="Post" action="./includes/backend/login.php" id="login" class="homepage-form">
+                    <form method="Post" action="./includes/backend/login.php"  id="login" class="homepage-form">
                         <div id="h2">
                             <h2>Login</h2>
                         </div>
