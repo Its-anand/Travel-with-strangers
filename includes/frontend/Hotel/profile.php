@@ -20,7 +20,8 @@
     <?php
         include('../../backend/headerProfile.php');
     ?>
-    <main>
+    <section id="hotelProfileContainer">
+    <main id="hotelProfile">
         <section id="profile">
         <?php
         
@@ -35,23 +36,16 @@
                     $result_fetch=mysqli_fetch_assoc($result);
             ?>
 
-        <div class="profileImageContainer"><img id="profileImage" src="<?php echo($result_fetch['user_profile_image']);?>"/></div>
+        <div class="profileImageContainer"><img id="profileImage" src="../<?php echo($result_fetch['user_profile_image']);?>"/></div>
             <h2 style="color: red;"><?php echo( $result_fetch['username']);?></h2>
             <div class="options">
-
                     <button onclick="showPostOperation('postUpload')">Post Something</button>
-                    <select id="plains" onchange="location = this.value;">
-                        <option style="display: none;">View option</option>
-                        <option value="./create-group.html">Create new group</option>
-                        <option value="./join-group.html">Join other group</option>
-                        <option value="./view-group.html">View plains</option>
-                    </select>
-
+                    <button onclick="showPostOperation('roomIdHolder')">Enter Room Id</button>
             </div>
                 <?php
                     }
             }
-?>
+            ?>
         </section>
         <section id="postsContainer">
             <section id="posts">
@@ -103,6 +97,10 @@
             </section>
         </section>
     </main>
+    <aside>
+              
+    </aside>
+    </section>
     <section id="Operations">
     <?php
                 $user_exist_query="SELECT * FROM `travel_with_strangers_registration_user` where `user_email` ='$_SESSION[UserLoginId]'";
@@ -166,7 +164,8 @@
                 <div class="verticalLineContainer"><div class="verticalLine"></div></div> <!--Vertical Line-->
                 <div class="postDescriptionNbtn"><!--Post Description-->
                     <textarea class="postDescription" name="postDescription" placeholder="Type something.."></textarea>
-                    <input type="hidden" name="role" value="user">
+                    <input type="hidden" name="role" value="hotel">
+
                     <div class="postBtn"><!--Post Operation Button-->
                         <input type="submit" name="uploadPost" value="Post">
                     </div>

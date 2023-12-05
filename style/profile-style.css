@@ -13,6 +13,54 @@ body{
   box-sizing: border-box;
 
 }
+#loading
+{
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  background:#fff;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--primaryColor);
+}
+#loading-animation{
+    border: 3px solid #d20a0a;
+    border-radius: 48% 52% 57% 43% / 39% 47% 53% 61%;
+    position: absolute;
+    width: 29rem;
+    height: 29rem;
+    animation: temp 20s infinite;
+}
+#loading-text{
+    font-size: 2rem;
+}
+@keyframes temp{
+
+    0%{
+      transform: rotate(0deg);
+  
+      border-radius: 52% 48% 55% 45% / 41% 54% 46% 59%   ;
+    }
+    25%{
+      border-radius: 47% 53% 41% 59% / 47% 39% 61% 53%       ;
+  
+    }
+    50%{
+      transform: rotate(180deg);
+      border-radius: 47% 53% 38% 62% / 47% 65% 35% 53%     ;
+  
+    }
+  
+  
+    100%{
+      transform: rotate(365deg);
+  
+      border-radius: 52% 48% 55% 45% / 41% 54% 46% 59% ;
+  
+    }
+  }
 /*--------------------------------------Header---------*/
 header{
   display: flex;
@@ -136,6 +184,24 @@ header{
   align-items: center;
   display: none;
 }
+
+.roomIdSubmitBtn{
+  width: 6rem;
+  background: #f82b0094;
+  color: #fff;
+  border: none;
+  height: 2rem;
+  cursor: pointer;
+}
+.roomIdSubmitBtn:hover{
+  background: #f82900bd;
+
+}
+.roomIdBox{
+    width: 15rem;
+    height: 2rem;
+    font-size: 1.1rem;
+}
 .postOperations{
   width: 50rem;
   height: 30rem;
@@ -145,6 +211,16 @@ header{
   display: flex;
   flex-direction: row;
 
+}
+#roomId{
+  width: 25rem;
+  height: 13rem;
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
 }
 .closePost{
   position: absolute;
@@ -288,4 +364,16 @@ header{
   border: 3px solid var(--primaryColor);
   background-color: var(--bgcolor);
   color: var(--primaryColor);
+}
+#hotelProfileContainer{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  
+}
+#hotelProfile{
+  width: 60%;
+}
+aside{
+  width: 40%;
 }

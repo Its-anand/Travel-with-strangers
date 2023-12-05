@@ -22,7 +22,7 @@ if(isset($_POST['user-login']))
                     if(password_verify($_POST['user_password'],$result_fetch['user_password']))
                     {
                         $_SESSION['logged_in']=true;
-                        $_SESSION['UserLoginId']=$result_fetch['full_name'];
+                        $_SESSION['UserLoginId']=$result_fetch['user_email'];
                         $_SESSION['username'] = $result_fetch['username'];
                         header("location: ../../includes/frontend/User/profile.php");
     
@@ -65,7 +65,7 @@ if(isset($_POST['user-login']))
                         $_SESSION['logged_in']=true;
                         $_SESSION['UserLoginId']=$result_fetch['user_email'];
                         $_SESSION['username'] = $result_fetch['username'];
-                        header("location: ../../includes/frontend/User/profile.php");
+                        header("location: ../../includes/frontend/Hotel/profile.php");
     
                     }
                     else
