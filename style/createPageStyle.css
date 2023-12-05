@@ -84,7 +84,41 @@ header{
   #logoutBtn{
     width: 2rem;
   }
+  h1{
+    color: var(--primaryColor);
+  }
 main{
     height: calc(100vh - 7rem);
-    background-color: #d20a0a;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+form{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 40rem;
+  
+}
+label, b{
+  color: rgba(231, 0, 0, 0.653);
+  margin: 1.5rem 0 1rem 0;
+}
+input, button{
+  height: 2.5rem;
+  border-radius: 10px;
+  padding: 0 1rem;
+  background-color: #fff;
+  border: 1px solid #000;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+button{
+  margin: 2rem 0;
+  width: 10rem;
+  padding: 0 1rem;
+
+}
+button:hover{
+  outline: 1px solid #000;
 }
