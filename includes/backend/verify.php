@@ -3,8 +3,6 @@
  include('../../components/alert.php');
  if(isset($_GET['email']) && isset($_GET['v_code']))
 {
-    echo $_GET['email'];
-    echo $_GET['v_code'];
     $query = "SELECT *FROM `travel_with_strangers_registration_user`WHERE `user_email`='$_GET[email]' and `verification_code`= '$_GET[v_code]'";
     $result=mysqli_query($con,$query);
     if($result)

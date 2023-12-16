@@ -1,0 +1,21 @@
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    padding:0 2rem;
+    height: 7rem;
+    width: 100%;
+    color: var(--primaryColor);
+  }
+  #logo{
+    font-size: 1.7rem;
+    font-weight: bold;
+    font-size: 1.7rem;
+    font-weight: bold;
+    color: red;
+    text-decoration: none;
+  }
+  #logoutBtn{
+    width: 2rem;
+  }

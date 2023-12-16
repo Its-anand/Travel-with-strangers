@@ -35,16 +35,16 @@
                     $result_fetch=mysqli_fetch_assoc($result);
             ?>
 
-        <div class="profileImageContainer"><img id="profileImage" src="<?php echo($result_fetch['user_profile_image']);?>"/></div>
+        <div class="profileImageContainer"><img id="profileImage" src="../<?php echo($result_fetch['user_profile_image']);?>"/></div>
             <h2 style="color: red;"><?php echo( $result_fetch['username']);?></h2>
             <div class="options">
 
                     <button onclick="showPostOperation('postUpload')">Post Something</button>
                     <select id="plains" onchange="location = this.value;">
                         <option style="display: none;">View option</option>
-                        <option value="./create-group.html">Create new group</option>
-                        <option value="./join-group.html">Join other group</option>
-                        <option value="./view-group.html">View plains</option>
+                        <option value="./create-group.php">Create new group</option>
+                        <option value="./join-group.php">Join other group</option>
+                        <option value="./chat.php">View plains</option>
                     </select>
 
             </div>

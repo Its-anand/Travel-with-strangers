@@ -1,4 +1,26 @@
 <style>
+      /* width */
+::-webkit-scrollbar {
+  width: 9px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  border: 1px solid #fff;
+  border-radius:10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #fff; 
+  border-radius:10px;
+
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #fff; 
+}
     #alert{
     z-index: 99999999 !important;;
     position: absolute;
@@ -48,12 +70,15 @@ a{
 }
 .message{
     font-size:1.1rem;
+    text-align: center;
+    overflow-y: auto;
 }
 @media screen and (max-width:500px) {
     #alert{
         width:97%;
     }
 }
+
 </style>
 <!--Success message-->
 <?php
