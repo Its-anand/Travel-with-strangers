@@ -187,11 +187,12 @@ header{
 
 .roomIdSubmitBtn{
   width: 6rem;
-  background: #f82b0094;
+  background: var(--primaryColor);
   color: #fff;
   border: none;
   height: 2rem;
   cursor: pointer;
+  border-radius: 10px;
 }
 .roomIdSubmitBtn:hover{
   background: #f82900bd;
@@ -201,6 +202,7 @@ header{
     width: 15rem;
     height: 2rem;
     font-size: 1.1rem;
+    border-radius: 10px;
 }
 .postOperations{
   width: 50rem;
@@ -221,6 +223,17 @@ header{
   flex-direction: column;
   justify-content: center;
   position: relative;
+}
+.setting{
+  width: 30rem;
+  height: 40rem;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  border-radius: 10px;
+  flex-direction: column;
 }
 .closePost{
   position: absolute;
@@ -348,6 +361,7 @@ header{
   border: 3px solid var(--primaryColor);
   cursor: pointer;
 }
+
 #plains{
   width: 10rem;
   height: 3rem;
@@ -366,14 +380,35 @@ header{
   color: var(--primaryColor);
 }
 #hotelProfileContainer{
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  
-}
-#hotelProfile{
-  width: 60%;
+  width: 100%; 
 }
 aside{
   width: 40%;
+}
+/*-------------------New changes in Hotel Profile-------------------*/
+#price {
+  border: 1px solid var(--primaryColor);
+  width: 15.5rem;
+  border-radius: 10px;
+  height: 2.5rem;
+}
+#setPrice{
+  background-color: var(--primaryColor);
+  width: 9rem;
+  border-radius: 10px;
+  height: 2.5rem;
+  border: none;
+  font-size: 1.1rem;
+  color: #fff;
+}
+.priceinfo
+{
+  display: flex;
+  width: 15rem;
+  justify-content: space-between;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+.red{
+  color: var(--primaryColor);
 }

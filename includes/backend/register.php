@@ -400,7 +400,7 @@ if(isset($_POST['user-registration']))
                       } else {
                         if (move_uploaded_file($_FILES["user_profile_image"]["tmp_name"], $target_file)) {
                           $password=password_hash($_POST['user_password'],PASSWORD_BCRYPT); 
-                          $v_code= bin2hex(random_bytes(16));  
+                          $v_code= bin2hex(random_bytes(16));
                           $query="INSERT INTO `travel_with_strangers_registration_user`(`user_profile_image`, `user_role`, `username`, `user_email`, `user_password`, `user_location`, `verification_code`, `is_verified`) VALUES ('$target_file','$_POST[user_role]','$_POST[username]','$_POST[user_email]','$password','$_POST[user_location]','$v_code','0')";
                           if(mysqli_query($con,$query) && sendMail($_POST['user_email'],$v_code)) 
                           {

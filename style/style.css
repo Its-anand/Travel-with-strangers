@@ -105,22 +105,17 @@ nav{
     background-color: var(--primaryColor);
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
+    justify-content: center;
     font-size: 1.1rem;
     height: calc(100vh - 5rem);
     display: none;
     padding: 3rem;
     z-index: 9999999999;
+    align-items: center;
+    color: #fff;
 }
-nav a
-{
-    color: var(--font);
-    transition: 0.4s;
-}
-nav a:hover
-{
-    transform: scale(1.06);
+nav p{
+    text-align: center;
 }
 /*--------------------------------------------------------------------main*/
 

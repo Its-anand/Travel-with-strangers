@@ -17,9 +17,12 @@
 <body>
     <header>
         <a id="logo" href="../../../Index.php">Travel with stranger</a>
+        <div class="account_button_container">
+        <a href="./profile.php"><img src="../../../media/profile.svg" alt=""></a>
         <a href="../../backend/logout.php" title="Log out">
         <img id="logoutBtn" src="../../../media/Logout.svg" alt="">
         </a>
+        </div>
     </header>
     <main>
         <form action="../../backend/create_group.php" method="POST" enctype="multipart/form-data">

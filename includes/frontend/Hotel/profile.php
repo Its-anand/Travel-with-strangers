@@ -37,10 +37,26 @@
             ?>
 
         <div class="profileImageContainer"><img id="profileImage" src="../<?php echo($result_fetch['user_profile_image']);?>"/></div>
-            <h2 style="color: red;"><?php echo( $result_fetch['username']);?></h2>
+            <h2 class="red"><?php echo( $result_fetch['username']);?></h2>
+            <?php
+            $query = "SELECT `price`, `visibility` FROM `tws_hotel` WHERE hotel_id = '$result_fetch[id]'";
+            $resultPrice = mysqli_query($con,$query);
+            if($resultPrice){
+            $fetched_result = mysqli_fetch_assoc($resultPrice);
+            
+            ?>
+              <div class="priceinfo">
+                <span>Price: <span class="red"><?php echo $fetched_result['price']?></span></span>
+                <span>Visibility: <span class="red"><?php echo $fetched_result['visibility']?></span></span>
+              </div>  
+            <?php
+            }
+            ?>
+            
             <div class="options">
                     <button onclick="showPostOperation('postUpload')">Post Something</button>
                     <button onclick="showPostOperation('roomIdHolder')">Enter Room Id</button>
+                    <button onclick="showPostOperation('setting')">Setting</button>
             </div>
                 <?php
                     }
@@ -97,9 +113,6 @@
             </section>
         </section>
     </main>
-    <aside>
-              
-    </aside>
     </section>
     <section id="Operations">
     <?php
@@ -125,7 +138,7 @@
                                     $postDescription = $result_fetched['post_description'];
                                 ?>
                                     <div class="postOperationContainter" id="postEdit<?php echo $id;?>">
-                                        <form action="../../../includes/backend/postEditAndDelete.php" method="POST" class="postOperations" enctype="multipart/form-data">
+                                        <form action="../../../includes/backend/hotel_postEditAndDelete.php" method="POST" class="postOperations" enctype="multipart/form-data">
                                             <div class="closePost" onclick="hidePostOperation('postEdit<?php echo $id;?>')"><img src="../../../media/closeButton.svg" alt=""></div> <!--Close Button-->
                                             <div class="postEditImgContainer"><!--Post Image-->
                                                 <img src="../<?php echo $postURL;?>" id="previewLoadedImage" class="postEditImg" >
@@ -173,15 +186,29 @@
 
             </form>
         </div>
-                    <div class="postOperationContainter" id="roomIdHolder">
-                        <form method="POST" action="#" id="roomId">
-                        <div class="closePost" onclick="hidePostOperation('roomIdHolder')"><img src="../../../media/closeButton.svg" alt=""></div> <!--Close Button-->
-                            <h2>Room ID</h2>
-                            <input type="text" name="roomId" class="roomIdBox">
-                            <BR>
-                            <input type="submit" class="roomIdSubmitBtn" value="Submit" name="submitRoomId">
-                        </form>
-                    </div>
+        <div class="postOperationContainter" id="roomIdHolder">
+            <form method="POST" action="#" id="roomId">
+            <div class="closePost" onclick="hidePostOperation('roomIdHolder')"><img src="../../../media/closeButton.svg" alt=""></div> <!--Close Button-->
+                <h2>Room ID</h2>
+                <input type="text" name="roomId" class="roomIdBox">
+                <BR>
+                <input type="submit" class="roomIdSubmitBtn" value="Submit" name="submitRoomId">
+            </form>
+        </div>
+        <div class="postOperationContainter" id="setting">
+            <form method="POST" action="../../backend/uploadPrice.php" class="setting">
+            <div class="closePost" onclick="hidePostOperation('setting')"><img src="../../../media/closeButton.svg" alt=""></div> <!--Close Button-->
+                <h2>Setting</h2>
+                <select name="visibility" require id="plains" style="width: 16rem; margin-bottom:1rem;" class="visibility">
+                    <option style="display: none;">--Select option--</option>
+                    <option value="0">Offline</option>
+                    <option value="1">Online</option>
+                </select>
+                <input type="text" name="price" id="price">
+                <BR>
+                <input type="submit" id="setPrice" value="Submit" name="setPrice">
+            </form>
+        </div>        
     </section>
 <script>
     function hidePostOperation(postDiv){
@@ -190,7 +217,6 @@
     function showPostOperation(postDiv){
         document.getElementById(postDiv).style.display='flex';
     }
-    
     function loader() {
             var preloader = document.getElementById('loading');
             preloader.style.display = "none";

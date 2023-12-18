@@ -77,7 +77,7 @@ if(isset($_POST['createGroup']))
                                         
                                         if(mysqli_query($con,$insertAdmin)) 
                                         {
-                                           alert('Admin created successfully','S','../frontend/User/profile.php');
+                                           alert('Group created successfully','S','../frontend/User/profile.php');
                                         }
                                         else
                                         {

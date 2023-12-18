@@ -23,11 +23,8 @@
         </section>
     </header>
     <nav id="nav">
-
-        <a href="./includes/frontend/User/profile.html">User Profile</a>
-        <a href="./includes/frontend/Hotel/profile.html">Hotel Profile</a>
-        <a href="./includes/contact.php">Contact Me</a>
-        <a href="./includes/about.php">About Me</a>
+        <h2>About</h2>
+        <p>My name is Anand Choudhary. I am the developer of this project. This project is about traveling <br> where one can make stranger friends and can travel with them</p>
     </nav>
     <main>
         <section class="description-container main--section">

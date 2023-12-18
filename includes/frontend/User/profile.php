@@ -4,7 +4,10 @@
     include('../../backend/connection.php');
     include('../../../components/alert.php');
     session_start();
-
+    if(!isset($_SESSION['logged_in']))
+    {
+        header("location: ../../../Index.php");
+    }
 ?>
 <head>
     <meta charset="UTF-8">
@@ -45,6 +48,7 @@
                         <option value="./create-group.php">Create new group</option>
                         <option value="./join-group.php">Join other group</option>
                         <option value="./chat.php">View plains</option>
+                        <option value="../Hotel/search_hotel.php">Search Hotel</option>
                     </select>
 
             </div>

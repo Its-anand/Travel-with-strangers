@@ -133,3 +133,10 @@ button:hover{
   cursor: pointer;
   margin-top: 0.2rem;
 }
+.account_button_container{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 8rem;
+}

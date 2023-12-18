@@ -229,6 +229,44 @@ if(!isset($_SESSION['logged_in']))
             align-items: center;
             color: var(--primaryColor);
         }
+        .postOperationContainter{
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  top: 0px;
+  right: 0px;
+  background: rgba( 0, 0, 0, 0.25 );
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 4px );
+  -webkit-backdrop-filter: blur( 4px );
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: none;
+}
+.setting{
+  width: 30rem;
+  height: 40rem;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  border-radius: 10px;
+  flex-direction: column;
+}
+
+.closePost{
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  cursor: pointer;
+}
+
+        .red{
+            color:red;
+        }
+
     </style>
 </head>
 
@@ -236,20 +274,18 @@ if(!isset($_SESSION['logged_in']))
 <header class="header">
         <a id="logo" href="../../../Index.php">Travel with stranger</a>
         <div class="account_button_container">
-        <a href="./profile.php"><img src="../../../media/profile.svg" alt=""></a>
+        <a href="../User/profile.php"><img src="../../../media/profile.svg" alt=""></a>
         <a href="../../backend/logout.php" title="Log out">
         <img id="logoutBtn" src="../../../media/Logout.svg" alt="">
         </a>
         </div>
     </header>
     <form action="#" class="aside" method="post">
+        <h1 class="red">Search Hotel</h1>
         <label for="location">Location</label> <br><br>
         <input type="text" placeholder="Enter place name *" required name="location">
         <br><br><br>
-        <label for="duration">Trip duration</label> <br><br>
-        <input type="text" placeholder="Enter trip duration *" required name="duration">
-        <br><br><br>
-        <label for="budget">Budget</label> <br><br>
+        <label for="budget">Price</label> <br><br>
         <input type="text" placeholder="Enter your budget * " required name="budget">
 
         <button type="submit" name="searchGroup">Search</button>
@@ -271,7 +307,7 @@ if(!isset($_SESSION['logged_in']))
                 <?php
                 }
                 else if(isset($_POST['searchGroup'])){
-                    $query = "SELECT * FROM tws_grp WHERE location_to LIKE '%$_POST[location]%' AND duration = $_POST[duration] AND budget = $_POST[budget] AND total_user < group_size";
+                    $query = "SELECT * FROM `tws_hotel` inner JOIN `travel_with_strangers_registration_user` ON travel_with_strangers_registration_user.id = tws_hotel.hotel_id WHERE user_location LIKE '%$_POST[location]%' AND price <= '$_POST[budget]' AND visibility = 'Online'";
                     $result = mysqli_query($con,$query);
             
                     if($result)
@@ -284,16 +320,14 @@ if(!isset($_SESSION['logged_in']))
                                 ?>
                                     <div class="group">
                                         <div class="group_name">
-                                            <p><?php echo $result_fetched['group_name']?></p>
+                                            <p><?php echo $result_fetched['username']?></p>
                                         </div>
                                         <div class="location">
-                                            <p><?php echo  $result_fetched['location_from']?> -> <?php  echo $result_fetched['location_to']?></p>
+                                            <p><?php echo  $result_fetched['price']?> Per day</p>
                                         </div>
-                                        <form method="post" action="../../backend/join_searched_group.php" class="request_container">
-                                            <input type="hidden" name="group_id" value="<?php echo  $result_fetched['grp_id']?>">
-                                            <input type="hidden" name="user_id" value="<?php echo  $_SESSION['userid']?>">
-                                            <button id="group_request_btn" name="requestGroupJoin">Request</button>
-                                        </form>
+                                        <div class="request_container" >
+                                            <button id="group_request_btn" onclick="showPostOperation('setting')" name="requestGroupJoin">Select</button>
+                                        </div>
                                     </div>
                                 <?php
                             }
@@ -327,6 +361,73 @@ if(!isset($_SESSION['logged_in']))
             </div>
         </div> 
     </section>
+    <div class="postOperationContainter" id="setting">
+        <form method="POST" action="../../backend/uploadPrice.php" class="setting">
+            <div class="closePost" onclick="hidePostOperation('setting')"><img src="../../../media/closeButton.svg" alt=""></div> <!--Close Button-->
+                <h2>Groups</h2>
+                <div id="groupContainer">
+                        <?php
+                            if(isset($_POST['searchGroup'])){
+                                $query = "SELECT * FROM `tws_grp` inner JOIN `tws_grp_members` ON tws_grp_members.group_id = tws_grp.grp_id  WHERE tws_grp_members.role = 'admin' AND tws_grp_members.user_id = '$_SESSION[userid]'";
+                                $result = mysqli_query($con,$query);
+                        
+                                if($result)
+                                {    
+                        
+                                    if(mysqli_num_rows($result)>0)
+                                    {     
+                                        while($result_fetched = mysqli_fetch_assoc($result))
+                                        {
+                                            ?>
+                                                <div class="group">
+                                                    <div class="group_name">
+                                                        <p><?php echo $result_fetched['group_name']?></p>
+                                                    </div>
+                                                    <div class="location">
+                                                        <p><?php echo  $result_fetched['location_from']?> -> <?php  echo $result_fetched['location_to']?></p>
+                                                    </div>
+                                                    </form><!--DON'T DELETE IT-->
+                                                    <form method="post" action="../../backend/join_searched_group.php" class="request_container">
+                                                        <input type="hidden" name="group_id" value="<?php echo  $result_fetched['grp_id']?>">
+                                                        <input type="hidden" name="user_id" value="<?php echo  $_SESSION['userid']?>">
+                                                        <button id="group_request_btn" name="requestGroupJoin">Send</button>
+                                                    </form>
+                                                </div>
+                                            <?php
+                                        }
+                                    }
+                                    else{
+                                        ?>
+                                        <div id="results">
+                                            <div class="notice">
+                                                <p>Create group first</p>
+                                            </div>
+                                        </div> 
+                                    <?php
+                                    }
+                                }
+                                else{
+                                ?>
+                                    <div id="results">
+                                        <div class="notice">
+                                            <p>Unable to connect to database</p>
+                                        </div>
+                                    </div> 
+                                <?php
+                                }
+                            }
+                        ?>
+                </div>
+            </div>
+        </form>
+    </div>  
 </body>
-
+<script>
+    function hidePostOperation(postDiv){
+        document.getElementById(postDiv).style.display='none';
+    }
+    function showPostOperation(postDiv){
+        document.getElementById(postDiv).style.display='flex';
+    }
+</script>
 </html>
