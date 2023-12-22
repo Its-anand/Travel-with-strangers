@@ -326,6 +326,7 @@ if(!isset($_SESSION['logged_in']))
                                             <p><?php echo  $result_fetched['price']?> Per day</p>
                                         </div>
                                         <div class="request_container" >
+                                            <input type="hidden" name="hotel_id" id = "hotel_id" value="<?php echo  $result_fetched['hotel_id']?>">
                                             <button id="group_request_btn" onclick="showPostOperation('setting')" name="requestGroupJoin">Select</button>
                                         </div>
                                     </div>
@@ -387,10 +388,10 @@ if(!isset($_SESSION['logged_in']))
                                                         <p><?php echo  $result_fetched['location_from']?> -> <?php  echo $result_fetched['location_to']?></p>
                                                     </div>
                                                     </form><!--DON'T DELETE IT-->
-                                                    <form method="post" action="../../backend/join_searched_group.php" class="request_container">
+                                                    <form method="post" action="../../backend/share.php" class="request_container">
                                                         <input type="hidden" name="group_id" value="<?php echo  $result_fetched['grp_id']?>">
-                                                        <input type="hidden" name="user_id" value="<?php echo  $_SESSION['userid']?>">
-                                                        <button id="group_request_btn" name="requestGroupJoin">Send</button>
+                                                        <input type="hidden" name="hotel_id" class="hotel">
+                                                        <button id="group_request_btn" name="shareHotelProfile">Send</button>
                                                     </form>
                                                 </div>
                                             <?php
@@ -428,6 +429,11 @@ if(!isset($_SESSION['logged_in']))
     }
     function showPostOperation(postDiv){
         document.getElementById(postDiv).style.display='flex';
+        let hotelID = document.getElementById('hotel_id').value;
+        var inputs = document.getElementsByClassName('hotel');
+        for (var i = 0; i < inputs.length; i++) {
+            inputs[i].setAttribute("value", hotelID);
+        }
     }
 </script>
 </html>

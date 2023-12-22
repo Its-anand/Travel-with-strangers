@@ -187,11 +187,11 @@
             </form>
         </div>
         <div class="postOperationContainter" id="roomIdHolder">
-            <form method="POST" action="#" id="roomId">
+            <form method="POST" action="../Hotel/hotel.php" id="roomId">
             <div class="closePost" onclick="hidePostOperation('roomIdHolder')"><img src="../../../media/closeButton.svg" alt=""></div> <!--Close Button-->
                 <h2>Room ID</h2>
-                <input type="text" name="roomId" class="roomIdBox">
-                <BR>
+                <input type="text" name="roomId" placeholder="Enter room id *" required class="roomIdBox">
+                <br>
                 <input type="submit" class="roomIdSubmitBtn" value="Submit" name="submitRoomId">
             </form>
         </div>
@@ -201,8 +201,8 @@
                 <h2>Setting</h2>
                 <select name="visibility" require id="plains" style="width: 16rem; margin-bottom:1rem;" class="visibility">
                     <option style="display: none;">--Select option--</option>
-                    <option value="0">Offline</option>
-                    <option value="1">Online</option>
+                    <option value="Offline">Offline</option>
+                    <option value="Online">Online</option>
                 </select>
                 <input type="text" name="price" id="price">
                 <BR>

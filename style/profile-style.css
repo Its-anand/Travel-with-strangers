@@ -412,3 +412,6 @@ aside{
 .red{
   color: var(--primaryColor);
 }
+.roomIdBox{
+  padding: 0 1rem;
+}

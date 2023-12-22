@@ -61,7 +61,6 @@ aside { grid-area: aside;
 main { grid-area: main; 
   border: 1PX solid var(--primaryColor);
   position: relative;
-
 }
 
 
@@ -318,11 +317,11 @@ main { grid-area: main;
   align-items: center;
   color:var(--primaryColor);
 }
-.payHotel{
+#payHotel{
   box-sizing: border-box;
   padding: 1rem;
   width: 100%;
-  height: 17rem;
+  height: 14rem;
   border-bottom: 2px solid var(--primaryColor);
 }
 
@@ -336,9 +335,14 @@ main { grid-area: main;
     "hotelProfile bookingInfo bookingInfo"
     "hotelProfile bookBtn bookBtn";
 }
+.hotel:hover{
+  background: aliceblue;
+  border-radius: 10px;
+}
 
 .hotelProfile { 
   grid-area: hotelProfile; 
+  cursor: pointer;
 
 }
 .hotelProfile img{

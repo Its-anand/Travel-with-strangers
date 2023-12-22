@@ -36,7 +36,7 @@ if(!isset($_SESSION['logged_in']))
     <?php
                     $user_id = $_SESSION['userid'];
 
-                    $query = "SELECT tws_grp.group_name, tws_grp.group_profile_pictures, tws_grp.location_from, tws_grp.location_to, tws_grp.grp_id from tws_grp inner join tws_grp_members on tws_grp.grp_id = tws_grp_members.group_id where user_id = '$user_id' AND status = '1'";
+                    $query = "SELECT tws_grp.group_name, tws_grp.group_profile_pictures, tws_grp.location_from, tws_grp.location_to, tws_grp.grp_id, tws_grp_members.selected_hotel_id from tws_grp inner join tws_grp_members on tws_grp.grp_id = tws_grp_members.group_id where user_id = '$user_id' AND status = '1'";
                     $result = mysqli_query($con,$query);
 
                     if($result)
@@ -49,6 +49,7 @@ if(!isset($_SESSION['logged_in']))
                                 ?>
                                     <div class="users"  id="from_id" onclick="display('<?php echo  $result_fetched['grp_id']?>')">
                                     <input type="hidden" name="group_id" id="groupID<?php echo  $result_fetched['grp_id']?>" value="<?php echo  $result_fetched['grp_id']?>">
+
                                         <div class="profileImageHolder"><img class="profileImg" src="../<?php echo  $result_fetched['group_profile_pictures']?>" alt=""></div>
                                         <div class="usernameHolder"><b class="username"><?php echo $result_fetched['group_name']?></b></div>
                                         <div class="locationHolder"><span class="locationFrom location"><?php echo  $result_fetched['location_from']?></span> <span class="arrow location">➜</span> <span class="locationTo location"><?php  echo $result_fetched['location_to']?></span></div>
@@ -105,16 +106,10 @@ if(!isset($_SESSION['logged_in']))
         </div>
     </main>
     <aside class="aside1">
-        <div class="payHotel">
-            <h3 class="red">Selected Hotel</h3>
-            <div class="hotel">
-                <div class="hotelProfile">
-                    <img src="../../../media/profileImage/user-anand.jpg" >
-                </div>
-                <div class="hotelName"><h2>Hotel Name</h2></div>
-                <div class="bookingInfo"><span class="bookedUser">3</span> <span>book out of </span><span class="groupSize">5</span></div>
-                <div class="bookBtn"><button>Book Now</button></div>
-            </div>
+    <h3 class="new_requests">Selected Hotel</h3>
+
+        <div id="payHotel">
+
         </div>
          
         <b class="new_requests">Requests</b><br><br>
@@ -129,12 +124,13 @@ if(!isset($_SESSION['logged_in']))
 <script>
 // Display message
 var groupID = null;
+var hotelID = null;
 var intervalID;
 var AsideIntervalID;
+var hotelIntervalID;
 
 function display(id) {
     groupID = $('#groupID' + id).val();
-    console.log(groupID);
     document.getElementById('hider').style.display='none';
     clearInterval(intervalID);
 
@@ -145,16 +141,26 @@ function display(id) {
         });
     }, 1000);
     
-     //Group join Request
-     clearInterval(AsideIntervalID);
+    //Group join Request
+    clearInterval(AsideIntervalID);
 
      AsideIntervalID = setInterval(() => {
      $.post('../../backend/fetchRequestData.php',{groupID: groupID},function(data, status){
-         console.log(data); //Use console to check what is the error
+         //console.log(data); //Use console to check what is the error
          document.getElementById('allRequests').innerHTML = data;
      });
- }, 2000);
-}
+    }, 2000);
+    
+
+    //Hotel Booking Request
+    clearInterval(hotelIntervalID);
+    hotelIntervalID = setInterval(() => {
+    $.post('../../backend/selectedHotel.php',{groupID: groupID},function(data, status){
+     //   console.log(data); //Use console to check what is the error
+        document.getElementById('payHotel').innerHTML = data;
+    });
+    }, 1000);
+    }
 
 function sendMessage(){
     var messageValue = $('#inputMsg').val();
