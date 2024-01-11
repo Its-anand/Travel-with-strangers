@@ -1,4 +1,4 @@
-# Pure-Health E-commerce Website
+# Travel with stranger
 
 Travel with Strangers is a platform that connects travelers with each other and helps them plan their trips together. Users can create a profile, add their travel preferences, and search for other users with similar interests. They can also join groups and chat with other members to plan their trips together. The application also provides a feature to book hotels directly from the website using Razorpay payment gateway.
 ## Features
