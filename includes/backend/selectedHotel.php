@@ -18,9 +18,9 @@ if($result){
     while($row  = mysqli_fetch_assoc($result)){
 
         $res = $res . '<div class="hotel">';
-        $res = $res . '<div class="hotelProfile">';
+        $res = $res . '<a href="./view.php?user_id=' . $row['hotel_id'] . '" class="hotelProfile">';
         $res = $res . '<img src="../'. $row['user_profile_image'] .'" >';
-        $res = $res . '</div>';
+        $res = $res . '</a>';
         $res = $res . '<div class="hotelName"><h2>'. $row['username'] .'</h2></div>';
         $res = $res . '<div class="bookingInfo"><span class="bookedUser">ID: '. $row['customer_id'] .'</span></div>';
         $res = $res . '<form action="../../backend/payscript.php" method="POST" class="bookBtn">

@@ -169,7 +169,7 @@ header{
 }
 /**-----------------------------------Post Operations---**/
 
-.postOperationContainter{
+.postOperationContainter, .postContainer{
   position: fixed;
   width: 100%;
   height: 100vh;
@@ -241,7 +241,7 @@ header{
   right: 1rem;
   cursor: pointer;
 }
-.postEditImgContainer{
+.postEditImgContainer, .postImgContainer{
   width: 50%;
   height: 100%;
   display: flex;
@@ -279,7 +279,7 @@ header{
 .postEditImgContainer:hover:before {
   opacity: 1;
 }
-.postEditImgContainer img {
+.postEditImgContainer img, .postImgContainer img {
   position: absolute;
   display: block;
   max-width: 100%;

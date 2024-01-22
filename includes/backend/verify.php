@@ -16,43 +16,43 @@
                 if($result_fetch['user_role']=='hotel'){
                     if(mysqli_query($con,$update))
                     {
-                            alert('Email verification is successful','S','../../Index.php');    
+                            alert('Email verification is successful','S','../../index.php');    
                             $newQuery = "INSERT INTO `tws_hotel`(`hotel_id`) VALUES ('$result_fetch[id]')";  
                             if(mysqli_query($con,$newQuery))
                             {
-                                alert('Email verification is successful','S','../../Index.php');    
+                                alert('Email verification is successful','S','../../index.php');    
                             }
                     }
                     else
                     {
-                            alert('Unknown Error in verifying hotel','D','../../Index.php');
+                            alert('Unknown Error in verifying hotel','D','../../index.php');
                     }
                 }
                 else{
                     if(mysqli_query($con,$update))
                     {
-                            alert('Email verification is successful','S','../../Index.php');    
+                            alert('Email verification is successful','S','../../index.php');    
                     }
                     else
                     {
-                            alert('Unknown Error in verifying customer','D','../../Index.php');
+                            alert('Unknown Error in verifying customer','D','../../index.php');
                     }
                 }
 
             }
             else
             {
-                alert('Email is already verified','D','../../Index.php');
+                alert('Email is already verified','D','../../index.php');
             }
         }
     }
     else
     {
-            alert('Unknown Error','D','../../Index.php');
+            alert('Unknown Error','D','../../index.php');
     }
 }
 else{
-    alert('Link is not right','D','../../Index.php');
+    alert('Link is not right','D','../../index.php');
  
 }
 ?>

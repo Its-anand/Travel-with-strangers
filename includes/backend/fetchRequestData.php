@@ -15,8 +15,8 @@ if($result){
     while($row  = mysqli_fetch_assoc($result)){
         $res = $res . '<div class="requests" id="requests">';
                 
-        $res = $res . '<a href="./view-profile.php?' . $row['id'] . '" title="View Profile"><img src="../'. $row['user_profile_image'] . ' "</a>';
-        $res = $res . '<a href="./view-profile.php? '.$row['id'] .'" title="View Profile" class="requested_users_name"><b>'. $row['username'].'</b></a>';
+        $res = $res . '<a href="./view.php?user_id=' . $row['id'] . '" title="View Profile"><img src="../'. $row['user_profile_image'] . ' "</a>';
+        $res = $res . '<a href="./view.php?user_id= '.$row['id'] .'" title="View Profile" class="requested_users_name"><b>'. $row['username'].'</b></a>';
         $res = $res . '<form action="../../backend/delete_request.php" method="POST" class="request_operation">';
         $res = $res . '<input type="hidden" name="memberId" value="' . $row['group_member_id'] . '">';
         $res = $res . '<input type="hidden" name="ViewedGroupId" value=" '. $groupID .'">';

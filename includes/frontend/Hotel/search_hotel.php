@@ -272,7 +272,7 @@ if(!isset($_SESSION['logged_in']))
 
 <body>
 <header class="header">
-        <a id="logo" href="../../../Index.php">Travel with stranger</a>
+        <a id="logo" href="../../../index.php">Travel with stranger</a>
         <div class="account_button_container">
         <a href="../User/profile.php"><img src="../../../media/profile.svg" alt=""></a>
         <a href="../../backend/logout.php" title="Log out">

@@ -32,7 +32,7 @@ session_start();
                         if($result2){
                             $result3 = mysqli_query($con,$tws_grp_query);
                             if($result3){
-                                alert("All done!","s","../frontend/Hotel/profile.php");
+                                alert("Thank you for using our services!","s","../frontend/Hotel/profile.php");
                             }
                             else{
                                 alert("Unable to delete tws_grp_query!","D","../frontend/Hotel/profile.php");
@@ -53,7 +53,7 @@ session_start();
         }
     }
     else{
-        alert("Unauthorized glass","D","../../Index.php");
+        alert("Unauthorized glass","D","../../index.php");
     }
   
 ?>

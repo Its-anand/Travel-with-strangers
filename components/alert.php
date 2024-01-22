@@ -42,7 +42,7 @@
     color: #fff;
     font-family: sans-serif;
 }
-.danger{
+.Danger{
     background: rgba( 240, 0, 0, 0.55 );
 }
 .warning{
@@ -133,7 +133,7 @@ a{
         }
         else if($alertType == 'D' || $alertType == 'd'){
         ?>
-            <div id="alert" class="Danger">
+        <div id="alert" class="Danger">
             <svg width="70" viewBox="0 0 890 859" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M881 429.5C881 661.438 686.1 850 445 850C203.9 850 9 661.438 9 429.5C9 197.562 203.9 9 445 9C686.1 9 881 197.562 881 429.5Z" stroke="white" stroke-width="18"/>
                 <path d="M212.279 191L689.915 668.636" stroke="white" stroke-width="18" stroke-linecap="round"/>
@@ -155,8 +155,5 @@ a{
         </div>
         <?php
         }
-        ?>
-
-        <?php
     }
 ?>

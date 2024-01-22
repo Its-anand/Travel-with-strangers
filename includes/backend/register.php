@@ -39,11 +39,11 @@ $mail = new PHPMailer(true);
 
         }
         else{
-            alert('No key found','D','../../Index.php');
+            alert('No key found','D','../../index.php');
         }
     }
     else{
-        alert('Unable to connect with database','D','../../Index.php');
+        alert('Unable to connect with database','D','../../index.php');
     }
 try {
     //Server settings
@@ -283,13 +283,14 @@ try {
         <td class='v-container-padding-padding' style='overflow-wrap:break-word;word-break:break-word;padding:30px 10px;font-family:arial,helvetica,sans-serif;' align='left'>
           
     <!--[if mso]><style>.v-button {background: transparent !important;}</style><![endif]-->
-  <div align='center'>
-    <!--[if mso]><v:roundrect xmlns:v='urn:schemas-microsoft-com:vml' xmlns:w='urn:schemas-microsoft-com:office:word' href='http://localhost/project/My%20Projects/Anandchoudhary.in/projects/Travel-with-strangers/includes/backend/verify.php?email=$email&v_code=$v_code' style='height:37px; v-text-anchor:middle; width:290px;' arcsize='11%'  stroke='f' fillcolor='#e03e2d'><w:anchorlock/><center style='color:#FFFFFF;'><![endif]-->
-      <a href='http://localhost/project/My%20Projects/Anandchoudhary.in/projects/Travel-with-strangers/includes/backend/verify.php?email=$email&v_code=$v_code' target='_blank' class='v-button' style='box-sizing: border-box;display: inline-block;text-decoration: none;-webkit-text-size-adjust: none;text-align: center;color: #FFFFFF; background-color: #e03e2d; border-radius: 4px;-webkit-border-radius: 4px; -moz-border-radius: 4px; width:50%; max-width:100%; overflow-wrap: break-word; word-break: break-word; word-wrap:break-word; mso-border-alt: none;font-size: 14px;'>
-        <span style='display:block;padding:10px;line-height:120%;'>Verify now</span>
-      </a>
-      <!--[if mso]></center></v:roundrect><![endif]-->
-  </div>
+
+<div align='center'>
+  <!--[if mso]><v:roundrect xmlns:v='urn:schemas-microsoft-com:vml' xmlns:w='urn:schemas-microsoft-com:office:word' href='https://www.anandchoudhary.in/projects/Travel-with-strangers/includes/backend/verify.php?email=$email&v_code=$v_code' style='height:37px; v-text-anchor:middle; width:290px;' arcsize='11%'  stroke='f' fillcolor='#e03e2d'><w:anchorlock/><center style='color:#FFFFFF;'><![endif]-->
+    <a href='https://www.anandchoudhary.in/projects/Travel-with-strangers/includes/backend/verify.php?email=$email&v_code=$v_code' target='_blank' class='v-button' style='box-sizing: border-box;display: inline-block;text-decoration: none;-webkit-text-size-adjust: none;text-align: center;color: #FFFFFF; background-color: #e03e2d; border-radius: 4px;-webkit-border-radius: 4px; -moz-border-radius: 4px; width:50%; max-width:100%; overflow-wrap: break-word; word-break: break-word; word-wrap:break-word; mso-border-alt: none;font-size: 14px;'>
+      <span style='display:block;padding:10px;line-height:120%;'>Verify now</span>
+    </a>
+    <!--[if mso]></center></v:roundrect><![endif]-->
+</div>
   
         </td>
       </tr>
@@ -349,6 +350,15 @@ try {
   </html>
 
     ";
+  //############### This code is for localhost email verify ################//
+  
+  // <div align='center'>
+  //   <!--[if mso]><v:roundrect xmlns:v='urn:schemas-microsoft-com:vml' xmlns:w='urn:schemas-microsoft-com:office:word' href='http://localhost/project/My%20Projects/Anandchoudhary.in/projects/Travel-with-strangers/includes/backend/verify.php?email=$email&v_code=$v_code' style='height:37px; v-text-anchor:middle; width:290px;' arcsize='11%'  stroke='f' fillcolor='#e03e2d'><w:anchorlock/><center style='color:#FFFFFF;'><![endif]-->
+  //     <a href='http://localhost/project/My%20Projects/Anandchoudhary.in/projects/Travel-with-strangers/includes/backend/verify.php?email=$email&v_code=$v_code' target='_blank' class='v-button' style='box-sizing: border-box;display: inline-block;text-decoration: none;-webkit-text-size-adjust: none;text-align: center;color: #FFFFFF; background-color: #e03e2d; border-radius: 4px;-webkit-border-radius: 4px; -moz-border-radius: 4px; width:50%; max-width:100%; overflow-wrap: break-word; word-break: break-word; word-wrap:break-word; mso-border-alt: none;font-size: 14px;'>
+  //       <span style='display:block;padding:10px;line-height:120%;'>Verify now</span>
+  //     </a>
+  //     <!--[if mso]></center></v:roundrect><![endif]-->
+  // </div>
     $mail->AltBody = 'Html mail not supported';
      
     $mail->send();
@@ -372,7 +382,7 @@ if(isset($_POST['user-registration']))
             $result_fetch=mysqli_fetch_assoc($result);
             if($result_fetch['user_email']==$_POST['user_email'])
             {
-                alert('You have already registered','W','../../Index.php');
+                alert('You have already registered','W','../../index.php');
             }
         }
         else
@@ -389,13 +399,13 @@ if(isset($_POST['user-registration']))
                 $uploadOk = 1;
 
                 if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "webp" ) {
-                  alert( "Sorry, only JPG, JPEG, PNG & webp files are allowed.",'D','../../Index.php');
+                  alert( "Sorry, only JPG, JPEG, PNG & webp files are allowed.",'D','../../index.php');
                   $uploadOk = 0;
                 }
                 else{
                       // Check if $uploadOk is set to 0 by an error
                       if ($uploadOk == 0) {
-                      alert( "Sorry, your image was not uploaded.",'D','../../Index.php');
+                      alert( "Sorry, your image was not uploaded.",'D','../../index.php');
                       // if everything is ok, try to upload file
                       } else {
                         if (move_uploaded_file($_FILES["user_profile_image"]["tmp_name"], $target_file)) {
@@ -404,29 +414,29 @@ if(isset($_POST['user-registration']))
                           $query="INSERT INTO `travel_with_strangers_registration_user`(`user_profile_image`, `user_role`, `username`, `user_email`, `user_password`, `user_location`, `verification_code`, `is_verified`) VALUES ('$target_file','$_POST[user_role]','$_POST[username]','$_POST[user_email]','$password','$_POST[user_location]','$v_code','0')";
                           if(mysqli_query($con,$query) && sendMail($_POST['user_email'],$v_code)) 
                           {
-                             alert('Registration successful! Check you mail to verify email','S','../../Index.php');
+                             alert('Registration successful! Check you mail to verify email','S','../../index.php');
                  
                           }
                           else
                           {
-                                 alert('Email service or database not working','D','../../Index.php');
+                                 alert('Email service or database not working','D','../../index.php');
                           }
                         } 
                         else {
-                          alert( "Sorry, there was an error uploading your file.",'D','../../Index.php');
+                          alert( "Sorry, there was an error uploading your file.",'D','../../index.php');
                         }
                         }
                 }
               } 
               else {
-                alert( "File is not an image.",'D','../../Index.php');
+                alert( "File is not an image.",'D','../../index.php');
                 $uploadOk = 0;
               }
         }
     } 
     else
     {
-        alert('Unable to put data into database','D','../../Index.php');
+        alert('Unable to put data into database','D','../../index.php');
     }
 }
 ?>

@@ -49,7 +49,6 @@ if(!isset($_SESSION['logged_in']))
                                 ?>
                                     <div class="users"  id="from_id" onclick="display('<?php echo  $result_fetched['grp_id']?>')">
                                     <input type="hidden" name="group_id" id="groupID<?php echo  $result_fetched['grp_id']?>" value="<?php echo  $result_fetched['grp_id']?>">
-
                                         <div class="profileImageHolder"><img class="profileImg" src="../<?php echo  $result_fetched['group_profile_pictures']?>" alt=""></div>
                                         <div class="usernameHolder"><b class="username"><?php echo $result_fetched['group_name']?></b></div>
                                         <div class="locationHolder"><span class="locationFrom location"><?php echo  $result_fetched['location_from']?></span> <span class="arrow location">➜</span> <span class="locationTo location"><?php  echo $result_fetched['location_to']?></span></div>
